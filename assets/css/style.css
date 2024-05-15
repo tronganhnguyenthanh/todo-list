@@ -1,0 +1,8 @@
+html{
+ overflow-x:hidden;
+ overflow-y:scroll; 
+}
+
+.form-custom-control:focus{
+  box-shadow:none !important;
+}
