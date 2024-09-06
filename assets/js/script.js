@@ -1,9 +1,15 @@
 let todos = []
 document.querySelector(".btn.btn-primary").addEventListener("click", function(){
  let value = document.querySelector(".form-custom-control").value
- todos.push(value)
- getTodoList(todos)
- document.querySelector(".form-custom-control").value = ""
+ if(value === ""){
+  document.querySelector("#errorMessage").innerHTML = `<p class="text-center text-danger">Please enter your to do list</p>`
+  return false
+ }else{
+   document.querySelector("#errorMessage").innerHTML = ""
+   todos.push(value)
+   getTodoList(todos)
+   document.querySelector(".form-custom-control").value = "" 
+ }
 })
 
 function getTodoList(todos){
