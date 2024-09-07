@@ -33,13 +33,34 @@ function getTodoList(todos){
   document.querySelector("#todoList").innerHTML = todo
 }
 
-document.querySelector(".btn.btn-secondary").addEventListener("click", function(){
- getTodoList(todos)
-})
-
+// Delete todo list
 function deleteToDoList(index){
-  if(window.confirm("Are you sure you want to delete this to do ?") === true){
-   todos.splice(index, 1)
+  swal({
+   title:"Are you sure you want to delete this to do list ?",
+   icon:"warning",
+   buttons:true,
+   dangerMode:true,
+  })
+  .then((willDelete) => {
+    if(willDelete) {
+     setTimeout(function(){
+      todos.splice(index, 1)
+      getTodoList(todos)
+     },1000)
+    }
+  });
+}
+
+function filterActivities(){
+  let value = document.querySelector(".form-custom-control").value
+  let filterTodo = todos.filter((i) => i?.includes(value))
+  getTodoList(filterTodo)
+}
+
+document.querySelector(".form-custom-control").addEventListener("change", function(){
+  // Reset to do list
+  let value = document.querySelector(".form-custom-control").value
+  if(value === ""){
    getTodoList(todos)
   }
-}
+})
