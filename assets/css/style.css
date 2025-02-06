@@ -6,3 +6,7 @@ html{
 .form-custom-control:focus{
   box-shadow:none !important;
 }
+
+.form-custom-control{
+  width:25%;
+}
